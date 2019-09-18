@@ -2,12 +2,10 @@
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
-document.addEventListener("DOMContentLoaded", init);
-
 var app = {
   getFilms: function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-      var response, _ref2, result;
+      var response, _ref2, results;
 
       return regeneratorRuntime.wrap(function _callee$(_context) {
         while (1) {
@@ -30,8 +28,8 @@ var app = {
 
             case 7:
               _ref2 = _context.sent;
-              result = _ref2.result;
-              return _context.abrupt('return', result);
+              results = _ref2.results;
+              return _context.abrupt('return', results);
 
             case 10:
               return _context.abrupt('return', []);
@@ -40,7 +38,7 @@ var app = {
               _context.prev = 13;
               _context.t0 = _context['catch'](0);
 
-              console.error('Oops, something went wrong...', _context.t0);
+              console.error('Whoops ...', _context.t0);
 
             case 16:
             case 'end':
@@ -77,6 +75,8 @@ var app = {
     target.appendChild(ul);
   }
 };
+
+document.addEventListener("DOMContentLoaded", init);
 
 function init() {
   app.getFilms().then(app.displayList);
